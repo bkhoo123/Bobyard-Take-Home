@@ -1,0 +1,20 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Comment {
+  id     String   @id @default(uuid())
+  author String
+  text   String
+  date   DateTime
+  likes  Int
+  image  String?  // Optional field, as some comments don't have images
+}
